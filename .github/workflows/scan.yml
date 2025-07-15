@@ -1,0 +1,19 @@
+name: Scan SQL
+
+on:
+  push:
+    paths:
+      - '**.zip'
+      - 'rules.txt'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: chmod +x scan_sql.sh
+      - run: ./scan_sql.sh rules.txt sql_files.zip report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scan-report
+          path: report.json
