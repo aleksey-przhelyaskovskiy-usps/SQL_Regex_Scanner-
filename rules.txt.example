@@ -1,0 +1,3 @@
+# Example rules
+SELECT \*
+password\s*=\s*['"]
